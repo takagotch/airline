@@ -44,7 +44,24 @@ public class Git
   }
   
   @Command(name = "show", description = "Gives some information about the remote <name>")
+  public static class RemoteShow extends GitCommand
+  {
+    @Arguments(description = "Do not query remote heads")
+    public boolean noQuery;
+    
+    @Arguments(description = "Remote to show")
+    public String remote;
+  }
   
+  @Command(name = "add", description = "Adds a remote")
+  public static class RemoteAdd extends GitCommand
+  {
+    @Option(name = "-t", description = "Track only a specific branch")
+    public String branch;
+    
+    @Arguments(description = "Remote repository to add")
+    public List<String> remote;
+  }
 }
 ```
 
